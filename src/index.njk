@@ -1,6 +1,7 @@
 ---
 title: Homepage
 layout: base.njk
+metaDesc: 'A made up agency site that you build if you take Learn Eleventy From Scratch, by Piccalilli'
 ---
 
       
@@ -32,3 +33,9 @@ layout: base.njk
     </ul>
   </div>
 </section> 
+
+{% set ctaContent = primaryCTA %} 
+{% include "partials/cta.html" %} 
+
+{% set ctaContent = cta %} 
+{% include "partials/cta.html" %}
