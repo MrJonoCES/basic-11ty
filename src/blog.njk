@@ -9,7 +9,7 @@ layout: 'base.njk'
 <h1 class="section-title">Recent articles</h1>
   <ul role="list" class="articles__list flow">
     {%- for post in collections.post | reverse -%}
-      {% include 'article-snipper.njk' %}
+      {% include 'article-snippet.njk' %}
     {%- endfor -%}
   </ul>
 </div>
