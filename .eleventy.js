@@ -8,7 +8,7 @@ module.exports = function(eleventyConfig) {
     eleventyConfig.addPassthroughCopy('./src/admin');
 
     // Plugins
-    config.addPlugin(rssPlugin);
+    eleventyConfig.addPlugin(rssPlugin);
 
     eleventyConfig.addFilter("postDate", (dateObj) => {
         return DateTime.fromJSDate(dateObj).toLocaleString(DateTime.DATE_MED);
