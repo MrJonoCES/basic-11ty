@@ -5,9 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     {% include "partials/meta-info.html" %}
-    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/css/style.css">
     <script defer src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
     {# <link rel="alternate" type="application/rss+xml" href="{{ site.url }}/feed.xml" /> #}
+    <!-- capture the CSS content as a Nunjucks variable -->
+    {% set css %}
+    {% include "critical.css" %}
+    {% endset %}
+    <!-- feed it through our cssmin filter to minify -->
+    <style>
+    {{ css | cssmin | safe }}
+    </style>
 </head>
 <body>
     {% include 'header.njk' %}
