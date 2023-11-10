@@ -1,12 +1,12 @@
 backend:
   name: git-gateway
   branch: main
-media_folder: "public/assets/blog"
-public_folder: "/assets/blog"
+media_folder: "public/assets/portfolio"
+public_folder: "/assets/portfolio"
 collections: 
-  - name: "blog"
-    label: "Blog"
-    folder: "src/blog"
+  - name: "portfolio"
+    label: "Portfolio"
+    folder: "src/portfolio"
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
     fields: 
