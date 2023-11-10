@@ -1,0 +1,16 @@
+{% extends "layouts/base.njk" %} 
+
+{% block content %}
+
+    <!-- blog.json adds the 'post' tag to every post -->
+        
+    <div class="section container">
+    <h1 class="section-title">Recent articles</h1>
+    <ul role="list" class="articles__list flow">
+        {%- for post in collections.post | reverse -%}
+            {% include 'article-snippet.njk' %}
+        {%- endfor -%}
+    </ul>
+    </div>
+
+{% endblock %}

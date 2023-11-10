@@ -1,0 +1,21 @@
+{% extends "layouts/base.njk" %} 
+       
+{% block content %}
+
+  <article class="main-article">
+    <div class="project__images" style="background-image: url({{ image }});">
+
+      <div class="info__panel on">
+      
+        <h2 class="article-title">
+          {{ title }}
+        </h2>
+        
+        {{ content | safe }}
+
+        <a href="{{ link }}" class="">{{ link }}</a>
+      </div>
+    </div>
+  </article>
+
+{% endblock %}

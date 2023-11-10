@@ -1,0 +1,12 @@
+{% extends "layouts/base.njk" %} 
+{# {% set pageCriticalStyles = ['_includes/home.css'] %} #}
+
+{% block content %}
+
+<section class="hero">
+    {%- for post in collections.post | reverse -%}
+      {% include 'article-snippet.njk' %}
+    {%- endfor -%}
+</section>
+
+{% endblock %}
