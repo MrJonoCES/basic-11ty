@@ -8,14 +8,21 @@
     <link rel="stylesheet" href="/css/style.css">
     <script defer src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
     {# <link rel="alternate" type="application/rss+xml" href="{{ site.url }}/feed.xml" /> #}
-    <!-- capture the CSS content as a Nunjucks variable -->
     {% set css %}
-    {% include "critical.css" %}
+        {% include "critical.css" %}
     {% endset %}
-    <!-- feed it through our cssmin filter to minify -->
     <style>
     {{ css | cssmin | safe }}
     </style>
+    {% eleventyGoogleFonts 'https://fonts.googleapis.com/css2?family=Gabarito:wght@400;600&display=swap' %}
+    {# Add facility for pages to delare an array of critical styles #}
+    {% if pageCriticalStyles %}
+    {% for item in pageCriticalStyles %}
+        <style>{% include item %}</style>
+    {% endfor %}
+    {% endif %}
+
+
 </head>
 <body>
     {% include 'header.njk' %}

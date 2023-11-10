@@ -2,12 +2,13 @@ const {DateTime} = require("luxon");
 const rssPlugin = require('@11ty/eleventy-plugin-rss');
 const lightningCSS = require("@11tyrocks/eleventy-plugin-lightningcss");
 const CleanCSS = require("clean-css");
+const eleventyGoogleFonts = require("eleventy-google-fonts");
 
 module.exports = function(eleventyConfig) {
 
+    eleventyConfig.addPlugin(eleventyGoogleFonts);
     eleventyConfig.addPlugin(lightningCSS);
     eleventyConfig.addPassthroughCopy('./src/css/style.css');
-    // eleventyConfig.addPassthroughCopy('./src/css/reset.css');
     eleventyConfig.addPassthroughCopy('./src/assets');
     eleventyConfig.addPassthroughCopy('./src/admin');
     
