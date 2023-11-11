@@ -24,6 +24,10 @@ content_sections:
         caption: First image caption
       - image: /assets/Beef-Posters-IG-00.jpg
         caption: Second image caption
+  - type: gallery_section
+    gallery_images:
+      - image: /assets/portfolio/ks-workshop-ig_0001_01.jpg
+        caption: Second go
 class: featured
 link: https://leftcultures.com/
 ---
