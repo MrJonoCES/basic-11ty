@@ -4,6 +4,7 @@ const lightningCSS = require("@11tyrocks/eleventy-plugin-lightningcss");
 const CleanCSS = require("clean-css");
 const eleventyGoogleFonts = require("eleventy-google-fonts");
 const Image = require("@11ty/eleventy-img");
+const imageSize = require('image-size');
 const path = require("path");
 
 module.exports = function(eleventyConfig) {
@@ -34,26 +35,54 @@ module.exports = function(eleventyConfig) {
         if (!altText) {
             throw new Error(`Missing alt text for image: ${imagePath}`);
         }
-
-        // Adjust the path to be relative to the Eleventy input directory
+    
+        // Ensure the full path to the image is correctly resolved
         let fullImagePath = path.join(__dirname, 'src', imagePath);
 
+        // Get dimensions of the image
+        const dimensions = imageSize(fullImagePath);
+    
         let metadata = await Image(fullImagePath, {
             widths: [400, 600, 900, 1400],
             formats: ["webp", "avif"],
-            outputDir: "./public/assets/", // Adjusted output directory
-            urlPath: "/assets/"
+            outputDir: "./public/assets/", // Make sure this matches your output directory
+            urlPath: "/assets/",
+            filenameFormat: function (id, src, width, format, options) {
+                // Customize the filename format as needed
+                let ext = path.extname(src);
+                let name = path.basename(src, ext);
+                return `${name}-${width}.${format}`;
+            }
         });
-
+    
         let imageAttributes = {
             alt: altText,
             sizes: "(min-width: 1024px) 100vw, 50vw",
             loading: "lazy",
             decoding: "async",
+            width: dimensions.width,
+            height: dimensions.height,
         };
-
+    
         return Image.generateHTML(metadata, imageAttributes);
+    });    
+    
+
+    // Background images
+    eleventyConfig.addFilter("responsiveBackgroundImage", function(imagePath) {
+        const sizes = [400, 600, 900, 1400];
+        let imagePaths = {};
+    
+        sizes.forEach(size => {
+            // Generate paths for WebP format
+            let resizedImagePath = imagePath.replace(/(.*)\.(jpg|jpeg|png)$/, `$1-${size}.webp`);
+            imagePaths[size] = resizedImagePath;
+        });
+    
+        return imagePaths;
     });
+    
+    
 
 
     return {

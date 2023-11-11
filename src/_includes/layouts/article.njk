@@ -1,12 +1,38 @@
-{% extends "layouts/base.njk" %} 
-       
+{% extends "layouts/base.njk" %}
+
 {% block content %}
 
-  <article class="main-article">
-    <div class="project__images" style="background-image: url({{ image }});">
+{% set responsiveImages = image | responsiveBackgroundImage %}
 
-      <div class="info__panel on">
-      
+<style>
+    .project__images {
+        background-image: url('{{ responsiveImages[400] }}'); /* Default to smallest image in WebP format */
+        background-size: cover;
+        background-position: center;
+    }
+
+    @media (min-width: 600px) {
+        .project__images {
+            background-image: url('{{ responsiveImages[600] }}');
+        }
+    }
+
+    @media (min-width: 900px) {
+        .project__images {
+            background-image: url('{{ responsiveImages[900] }}');
+        }
+    }
+
+    @media (min-width: 1400px) {
+        .project__images {
+            background-image: url('{{ responsiveImages[1400] }}');
+        }
+    }
+</style>
+
+  <article class="main-article">
+    <div class="project__images">
+      <div class="info__panel">
         <h2 class="article-title">
           {{ title }}
         </h2>
@@ -18,9 +44,18 @@
     </div>
   </article>
   <article>
-{% optimizeImage image, imageAlt %}
-
-
+    {% optimizeImage image, imageAlt %}
   </article>
+
+{% endblock %}
+
+{% block head %}
+
+    {% set css %}
+        {% include "css/project.css" %}
+    {% endset %}
+    <style>
+    {{ css | cssmin | safe }}
+    </style>
 
 {% endblock %}
