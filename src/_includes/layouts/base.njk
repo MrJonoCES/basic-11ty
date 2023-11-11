@@ -13,12 +13,12 @@
     <script defer src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
     {% eleventyGoogleFonts 'https://fonts.googleapis.com/css2?family=Gabarito:wght@400;600&display=swap' %}
     
-    {% set css %}
+    {# {% set css %}
         {% include "css/critical.css" %}
     {% endset %}
     <style>
     {{ css | cssmin | safe }}
-    </style>
+    </style> #}
     {% block head %}{% endblock %}
 
     {% eleventyGoogleFonts 'https://fonts.googleapis.com/css2?family=Gabarito:wght@400;600&display=swap' %}
