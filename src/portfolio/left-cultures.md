@@ -14,9 +14,10 @@ content_sections:
     content: Adding a lexicon that allowed readers to find topics covered in
       specific issues of the magazine and the ability for site uses to discover
       more about the contributors to the magazine.
-  - type: image_section
-    image: /assets/portfolio/ks-workshop-ig_0000_00.jpg
-    caption: Image caption here
+  - type: gallery_section
+    gallery_images:
+      - image: /assets/THA-Site-IG-1.jpg
+        caption: THA
   - type: gallery_section
     gallery_images:
       - image: /assets/01.jpg
