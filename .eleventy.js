@@ -3,8 +3,8 @@ const rssPlugin = require('@11ty/eleventy-plugin-rss');
 const lightningCSS = require("@11tyrocks/eleventy-plugin-lightningcss");
 const CleanCSS = require("clean-css");
 const eleventyGoogleFonts = require("eleventy-google-fonts");
-const pluginImage = require('@11ty/eleventy-img');
-const path = require('path');
+const Image = require("@11ty/eleventy-img");
+const path = require("path");
 
 module.exports = function(eleventyConfig) {
 
@@ -29,38 +29,32 @@ module.exports = function(eleventyConfig) {
         return DateTime.fromJSDate(dateObj).toLocaleString(DateTime.DATE_MED);
     });
 
-    // Custom image processing transform
-    eleventyConfig.addTransform('optimizeImages', async (content, outputPath) => {
-        if (outputPath.endsWith('.html')) {
-            // Check if the content is HTML before attempting to process it as an image
-            if (content.includes('<html')) {
-                return content;
-            }
-            
-            const images = await pluginImage(content, {
-                /* Eleventy Image options */
-            });
-
-            // Iterate over each image in the content
-            images.forEach((image) => {
-                // Calculate the output path relative to the output directory
-                const outputImagePath = path.relative('./src', image.outputPath);
-
-                // Copy the optimized image to the output directory
-                eleventyConfig.addPassthroughCopy({
-                    [image.outputPath]: outputImagePath,
-                });
-
-                // Replace the image paths in the HTML content
-                content = content.replace(
-                    new RegExp(`src=["']\/assets\/${image.inputPath}["']`, 'g'),
-                    `src="/${outputImagePath}"`
-                );
-            });
+    // Images
+    eleventyConfig.addNunjucksAsyncShortcode("optimizeImage", async function(imagePath, altText) {
+        if (!altText) {
+            throw new Error(`Missing alt text for image: ${imagePath}`);
         }
 
-        return content;
+        // Adjust the path to be relative to the Eleventy input directory
+        let fullImagePath = path.join(__dirname, 'src', imagePath);
+
+        let metadata = await Image(fullImagePath, {
+            widths: [400, 600, 900, 1400],
+            formats: ["webp", "avif"],
+            outputDir: "./public/assets/", // Adjusted output directory
+            urlPath: "/assets/"
+        });
+
+        let imageAttributes = {
+            alt: altText,
+            sizes: "(min-width: 1024px) 100vw, 50vw",
+            loading: "lazy",
+            decoding: "async",
+        };
+
+        return Image.generateHTML(metadata, imageAttributes);
     });
+
 
     return {
         dir: {
