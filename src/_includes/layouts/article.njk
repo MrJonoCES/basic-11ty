@@ -52,9 +52,10 @@
     <h2>{{ section.title }}</h2>
     <p>{{ section.content | safe }}</p>
   {% elif section.type == "gallery_section" %}
-        <div class="project__gallery">
+    <div class="project__gallery">
       {% for image in section.gallery_images %}
         {% optimizeImage image.image, image.caption %}
+        <p>{{ image.caption | safe }}</p>
       {% endfor %}
     </div>
   {% endif %}

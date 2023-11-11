@@ -31,12 +31,6 @@ collections:
             fields:
               - { label: "Section Title", name: "title", widget: "string" }
               - { label: "Section Content", name: "content", widget: "markdown" }
-          - name: "image_section"
-            label: "Image Section"
-            widget: "object"
-            fields:
-              - { label: "Image", name: "image", widget: "image" }
-              - { label: "Image Caption", name: "caption", widget: "string" }
           - name: "gallery_section"
             label: "Gallery Section"
             widget: "object"

@@ -26,7 +26,7 @@ content_sections:
         caption: Second image caption
   - type: gallery_section
     gallery_images:
-      - image: /assets/KS_Workshop_IG_0001_01.jpg
+      - image: /assets/KS-Workshop-IG_0001_01.jpg
         caption: Second go
 class: featured
 link: https://leftcultures.com/
