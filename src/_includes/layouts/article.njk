@@ -4,6 +4,7 @@
 
 {% set responsiveImages = image | responsiveBackgroundImage %}
 
+{# Just for optimised BG images #}
 <style>
     .project__images {
         background-image: url('{{ responsiveImages[400] }}'); /* Default to smallest image in WebP format */

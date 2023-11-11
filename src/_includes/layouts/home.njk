@@ -4,7 +4,7 @@
 
   <section class="hero">
       {%- for post in collections.post | reverse -%}
-        {% include 'article-snippet.njk' %}
+        {% include "article-snippet.njk" %}
       {%- endfor -%}
   </section>
 
