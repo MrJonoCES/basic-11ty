@@ -45,15 +45,21 @@ module.exports = function(eleventyConfig) {
         let metadata = await Image(fullImagePath, {
             widths: [400, 600, 900, 1400],
             formats: ["webp", "avif"],
-            outputDir: "./public/assets/", // Make sure this matches your output directory
+            outputDir: "./public/assets/",
             urlPath: "/assets/",
             filenameFormat: function (id, src, width, format, options) {
-                // Customize the filename format as needed
                 let ext = path.extname(src);
                 let name = path.basename(src, ext);
                 return `${name}-${width}.${format}`;
+            },
+            sharpWebpOptions: {
+                quality: 80
+            },
+            sharpAvifOptions: {
+                quality: 80 
             }
         });
+
     
         let imageAttributes = {
             alt: altText,
