@@ -9,7 +9,7 @@
     {% include "partials/meta-info.njk" %}
     <link rel="alternate" type="application/rss+xml" href="{{ site.url }}/feed.xml" />
     <link rel="stylesheet" media="print" href="/css/style.css?{{ assetHash }}" onload="this.media='all'" />
-    <link rel="stylesheet" href="/css/{{ cssFile }}?{{ assetHash }}" />
+    {# <link rel="stylesheet" href="/css/{{ cssFile }}?{{ assetHash }}" /> #}
     <script defer src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
     {% eleventyGoogleFonts 'https://fonts.googleapis.com/css2?family=Gabarito:wght@400;600&display=swap' %}
     
@@ -19,6 +19,7 @@
     <style>
     {{ css | cssmin | safe }}
     </style>
+    {% block head %}{% endblock %}
 
     {% eleventyGoogleFonts 'https://fonts.googleapis.com/css2?family=Gabarito:wght@400;600&display=swap' %}
 
@@ -31,6 +32,7 @@
         {% block content %}{% endblock %}
       </main>
     
+
     </div>
     
   </body>

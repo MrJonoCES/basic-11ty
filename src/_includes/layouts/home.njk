@@ -10,3 +10,14 @@
 </section>
 
 {% endblock %}
+
+{% block head %}
+
+    {% set css %}
+        {% include "home.css" %}
+    {% endset %}
+    <style>
+    {{ css | cssmin | safe }}
+    </style>
+
+{% endblock %}
