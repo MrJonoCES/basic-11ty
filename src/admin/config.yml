@@ -1,14 +1,9 @@
-backend:
-  name: git-gateway
-  branch: main
-media_folder: "public/assets/portfolio"
-public_folder: "/assets/portfolio"
 collections: 
   - name: "portfolio"
     label: "Portfolio"
     folder: "src/portfolio"
     create: true
-    slug: "{{year}}-{{month}}-{{day}}-{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     fields: 
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Description", name: "description", widget: "string" }
@@ -17,4 +12,30 @@ collections:
       - { label: "Tags", name: "tags", widget: "list", default: ["post"] }
       - { label: "Featured Image", name: "image", widget: "image" }
       - { label: "Image Caption", name: "imageAlt", widget: "string" }
+      - label: "Content Sections"
+        name: "content_sections"
+        widget: "list"
+        types:
+          - name: "text_section"
+            label: "Text Section"
+            widget: "object"
+            fields:
+              - { label: "Section Title", name: "title", widget: "string" }
+              - { label: "Section Content", name: "content", widget: "markdown" }
+          - name: "image_section"
+            label: "Image Section"
+            widget: "object"
+            fields:
+              - { label: "Image", name: "image", widget: "image" }
+              - { label: "Image Caption", name: "caption", widget: "string" }
+          - name: "gallery_section"
+            label: "Gallery Section"
+            widget: "object"
+            fields:
+              - label: "Gallery Images"
+                name: "gallery_images"
+                widget: "list"
+                fields:
+                  - { label: "Image", name: "image", widget: "image" }
+                  - { label: "Image Caption", name: "caption", widget: "string" }
       - { label: "Body", name: "body", widget: "markdown" }
