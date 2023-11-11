@@ -43,9 +43,31 @@
       </div>
     </div>
   </article>
-  <article>
+  {# <article>
     {% optimizeImage image, imageAlt %}
-  </article>
+  </article> #}
+
+  {% for section in content_sections %}
+  {% if section.type == "text_section" %}
+    <h2>{{ section.title }}</h2>
+    <p>{{ section.content | safe }}</p>
+  {% elif section.type == "image_section" %}
+    <img src="{{ section.image }}" alt="{{ section.caption }}">
+    <p>{{ section.caption }}</p>
+  {% elif section.type == "gallery_section" %}
+    <div class="project__gallery">
+      {% for image in section.gallery_images %}
+      <figure>
+          <img src="{{ image.image }}" alt="{{ image.caption }}">
+          <figcaption>
+            <p>{{ image.caption }}</p>
+          </figcaption>
+        </figure>
+      {% endfor %}
+    </div>
+  {% endif %}
+{% endfor %}
+
 
 {% endblock %}
 
