@@ -11,8 +11,11 @@ module.exports = function(eleventyConfig) {
     eleventyConfig.addPlugin(eleventyGoogleFonts);
     eleventyConfig.addPlugin(lightningCSS);
     eleventyConfig.addPassthroughCopy('./src/css/style.css');
+    eleventyConfig.addPassthroughCopy('./src/_includes/css/');
     eleventyConfig.addPassthroughCopy('./src/assets');
     eleventyConfig.addPassthroughCopy('./src/admin');
+
+    eleventyConfig.addWatchTarget('src/css')
     
     // inline-css
     eleventyConfig.addFilter("cssmin", function(code) {
