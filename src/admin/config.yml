@@ -1,8 +1,12 @@
 backend:
   name: git-gateway
   branch: main
-media_folder: "public/assets/portfolio"
-public_folder: "/assets/portfolio"
+media_folder: "public/assets"
+public_folder: "/assets"
+slug:
+  encoding: "ascii"
+  clean_accents: true
+  sanitize_replacement: "_"
 collections: 
   - name: "portfolio"
     label: "Portfolio"
