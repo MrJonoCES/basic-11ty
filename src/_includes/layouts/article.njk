@@ -55,7 +55,7 @@
   {% elif section.type == "gallery_section" %}
     <div class="project__gallery">
       {% for image in section.gallery_images %}
-        {% optimizeImage image.image, image.caption %}
+        {% optimizeImage image.image, image.caption, image.class %}
         <p>{{ image.caption | safe }}</p>
       {% endfor %}
     </div>

@@ -31,7 +31,7 @@ module.exports = function(eleventyConfig) {
     });
 
     // Images
-    eleventyConfig.addNunjucksAsyncShortcode("optimizeImage", async function(imagePath, altText) {
+    eleventyConfig.addNunjucksAsyncShortcode("optimizeImage", async function(imagePath, altText, imageClass = "") {
         if (!altText) {
             throw new Error(`Missing alt text for image: ${imagePath}`);
         }
@@ -64,6 +64,7 @@ module.exports = function(eleventyConfig) {
         let imageAttributes = {
             alt: altText,
             sizes: "(min-width: 1024px) 100vw, 50vw",
+            class: imageClass, 
             loading: "lazy",
             decoding: "async",
             width: dimensions.width,

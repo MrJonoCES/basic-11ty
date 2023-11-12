@@ -18,16 +18,20 @@ content_sections:
     gallery_images:
       - image: /assets/THA-Site-IG-1.jpg
         caption: THA
+        class: test
   - type: gallery_section
     gallery_images:
       - image: /assets/01.jpg
         caption: First image caption
+        class: test
       - image: /assets/Beef-Posters-IG-00.jpg
         caption: Second image caption
+        class: test
   - type: gallery_section
     gallery_images:
       - image: /assets/KS-Workshop-IG_0001_01.jpg
         caption: Second go
+        class: test test1 test2
 class: featured
 link: https://leftcultures.com/
 ---

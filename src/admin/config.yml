@@ -41,4 +41,5 @@ collections:
                 fields:
                   - { label: "Image", name: "image", widget: "image" }
                   - { label: "Image Caption", name: "caption", widget: "string" }
+                  - { label: "Image CLass", name: "class", widget: "string" }
       - { label: "Body", name: "body", widget: "markdown" }
