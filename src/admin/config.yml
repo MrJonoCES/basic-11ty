@@ -12,15 +12,13 @@ collections:
     label: "Portfolio"
     folder: "src/portfolio"
     create: true
-    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    slug: "/{{ page.fileSlug }}/"
     fields: 
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Description", name: "description", widget: "string" }
-      - { label: "Author", name: "author", widget: "string" }
-      - { label: "Date", name: "date", widget: "datetime" }
       - { label: "Tags", name: "tags", widget: "list", default: ["post"] }
-      - { label: "Featured Image", name: "image", widget: "image" }
-      - { label: "Image Caption", name: "imageAlt", widget: "string" }
+      - { label: "Featured Image", name: "featured_image", widget: "image" }
+      - { label: "Image Caption", name: "featured_imageAlt", widget: "string" }
       - label: "Content Sections"
         name: "content_sections"
         widget: "list"
@@ -41,5 +39,7 @@ collections:
                 fields:
                   - { label: "Image", name: "image", widget: "image" }
                   - { label: "Image Caption", name: "caption", widget: "string" }
-                  - { label: "Image CLass", name: "class", widget: "string" }
+                  - { label: "Image Class", name: "img_class", widget: "string" }
       - { label: "Body", name: "body", widget: "markdown" }
+      - { label: "Project Class", name: "project_class", widget: "string" }
+      - { label: "Link", name: "link", widget: "string" }

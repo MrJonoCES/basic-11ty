@@ -2,13 +2,13 @@
 
 {% block content %}
 
-    <!-- portfolio.json adds the 'post' tag to every post -->
+    <!-- portfolio.json adds the 'project' tag to every project -->
         
     <div class="section container">
-    <h1 class="section-title">Recent articles</h1>
+    <h1 class="section-title">Portfolio</h1>
     <ul role="list" class="articles__list flow">
-        {%- for post in collections.post | reverse -%}
-            {% include 'article-snippet.njk' %}
+        {%- for project in collections.project | reverse -%}
+            {% include 'partials/project-snippet.njk' %}
         {%- endfor -%}
     </ul>
     </div>

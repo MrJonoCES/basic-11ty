@@ -1,13 +1,11 @@
 ---
 title: Left Cultures Shopify Theme
 description: Whatevs
-author: Kevin Powell
-date: 2021-05-01
 tags:
-  - post
+  - project
   - featured
-image: /assets/LC-Site-Frame_0000_00.jpg
-imageAlt: This is a test
+featured_image: /assets/LC-Site-Frame_0000_00.jpg
+featured_imageAlt: This is a test
 content_sections:
   - type: text_section
     title: Lexicon
@@ -18,21 +16,21 @@ content_sections:
     gallery_images:
       - image: /assets/THA-Site-IG-1.jpg
         caption: THA
-        class: test
+        img_class: test
   - type: gallery_section
     gallery_images:
       - image: /assets/01.jpg
         caption: First image caption
-        class: test
+        img_class: test
       - image: /assets/Beef-Posters-IG-00.jpg
         caption: Second image caption
-        class: test
+        img_class: test
   - type: gallery_section
     gallery_images:
       - image: /assets/KS-Workshop-IG_0001_01.jpg
         caption: Second go
-        class: test test1 test2
-class: featured
+        img_class: test test1 test2
+project_class: featured
 link: https://leftcultures.com/
 ---
 

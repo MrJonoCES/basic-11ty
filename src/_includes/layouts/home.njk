@@ -3,8 +3,8 @@
 {% block content %}
 
   <section class="hero">
-      {%- for post in collections.post | reverse -%}
-        {% include "article-snippet.njk" %}
+      {%- for project in collections.project | reverse -%}
+        {% include "partials/project-snippet.njk" %}
       {%- endfor -%}
   </section>
 

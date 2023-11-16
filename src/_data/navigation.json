@@ -1,8 +1,16 @@
 {
-    "items": [
-      {
-        "text": "Contact/Bio",
-        "url": "/contact/"
-      }
-    ]
-  }
+  "items": [
+    {
+      "text": "About",
+      "url": "/about/"
+    },
+    {
+      "text": "Portfolio",
+      "url": "/portfolio/"
+    },
+    {
+      "text": "Contact",
+      "url": "/contact/"
+    }
+  ]
+}

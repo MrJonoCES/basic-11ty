@@ -15,6 +15,8 @@ module.exports = function(eleventyConfig) {
     eleventyConfig.addPassthroughCopy('./src/_includes/css/');
     eleventyConfig.addPassthroughCopy('./src/assets');
     eleventyConfig.addPassthroughCopy('./src/admin');
+    eleventyConfig.addPassthroughCopy('./src/utils');
+    eleventyConfig.addPassthroughCopy('./src/js');
 
     eleventyConfig.addWatchTarget('src/css')
     
@@ -96,6 +98,7 @@ module.exports = function(eleventyConfig) {
         dir: {
             input: "src",
             output: "public"
-        }
+        },
+        permalink: "/{{ page.fileSlug }}/"
     };
 };

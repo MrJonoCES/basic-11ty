@@ -2,9 +2,9 @@
 
 {% block content %}
 
-{% set responsiveImages = image | responsiveBackgroundImage %}
+{% set responsiveImages = featured_image | responsiveBackgroundImage %}
 
-{# Just for optimised BG images #}
+{# styles are just for optimised BG images #}
 <style>
     .project__images {
         background-image: url('{{ responsiveImages[400] }}'); /* Default to smallest image in WebP format */
@@ -45,7 +45,7 @@
     </div>
   </article>
   <article>
-    {% optimizeImage image, imageAlt %}
+    {% optimizeImage featured_image, featured_imageAlt %}
   </article>
 
   {% for section in content_sections %}
@@ -55,7 +55,7 @@
   {% elif section.type == "gallery_section" %}
     <div class="project__gallery">
       {% for image in section.gallery_images %}
-        {% optimizeImage image.image, image.caption, image.class %}
+        {% optimizeImage image.image, image.caption, image.img_class %}
         <p>{{ image.caption | safe }}</p>
       {% endfor %}
     </div>
@@ -74,4 +74,12 @@
     {{ css | cssmin | safe }}
     </style>
 
+{% endblock %}
+
+{% block scripts %}
+    {% include "partials/gsap.njk" %}
+    {% include "partials/jquery.njk" %}
+    {% if page.url === '/specific-page/' %}
+      <script src="/js/animations.js"></script>
+    {% endif %}
 {% endblock %}
